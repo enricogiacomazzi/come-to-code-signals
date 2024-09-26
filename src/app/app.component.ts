@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from './shared/components/navbar.component';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'ng-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [RouterOutlet, NavbarComponent],
+  template: `
+    <div class="container" [class.dark]="ts.isDark">
+      <ng-navbar />
+
+      <router-outlet />
+    </div>
+  `,
+  styles: ``
 })
 export class AppComponent {
-  title = 'ctc_demo';
+  protected ts = inject(ThemeService);
 }
