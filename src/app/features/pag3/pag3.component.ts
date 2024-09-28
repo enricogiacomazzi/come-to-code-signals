@@ -19,7 +19,7 @@ import { debounceTime, distinctUntilChanged, map, startWith, switchMap, tap } fr
         </div>
     </div>
     <ul>
-      @for(user of users(); track user.id ) {
+      @for(user of users(); track user.id) {
         <li>{{user.name}}</li>
       }
     </ul>
@@ -30,11 +30,14 @@ export class Pag3Component {
   private http = inject(HttpClient);
   protected ctrl = new FormControl<string>('');
 
+  // private url = 'https://jsonplaceholder.typicode.com/users';
+  private url = 'http://localhost:3000/users';
+
   protected users = toSignal(this.ctrl.valueChanges.pipe(
     debounceTime(500),
     distinctUntilChanged(),
-    startWith(''),
+    startWith(this.ctrl.value),
     map(value => !value ? '' : `?name_like=${value}`),
-    switchMap(query => this.http.get<User[]>('https://jsonplaceholder.typicode.com/users' + query))
+    switchMap(query => this.http.get<User[]>(this.url + query))
   ));
 }

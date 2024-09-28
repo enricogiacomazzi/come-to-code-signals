@@ -21,7 +21,10 @@ export class PokemonComponent {
   protected url = signal<string | undefined>(undefined);
 
   protected data = toSignal(toObservable(this.url).pipe(
-    switchMap(u => concat(of(emptyList()), this.ps.GetPokemonList(u)))
+    switchMap(u => concat(
+      of(emptyList()),
+      this.ps.GetPokemonList(u)
+    ))
   ));
 
   protected items = computed(() => this.data()?.results ?? []);

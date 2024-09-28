@@ -13,7 +13,6 @@ import { ThemeService } from '../../../core/services/theme.service';
       {{render()}}
     </div>
   `,
-  styles: ``,
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class Counter2Component {

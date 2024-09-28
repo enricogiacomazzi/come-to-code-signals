@@ -21,14 +21,11 @@ import * as romans from 'romans';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Counter2SignalComponent {
-  public counter = input.required<CounterModel>();
   protected ts = inject(ThemeService);
+  public counter = input.required<CounterModel>();
   protected value = computed(() => this.counter().value);
   protected isValid = computed(() => this.value() > 0);
-  protected romansValue = computed(() => {
-    // console.log('romans conversion');
-    return romans.romanize(this.value());
-  });
+  protected romansValue = computed(() => romans.romanize(this.value()));
 
 
   protected render() {

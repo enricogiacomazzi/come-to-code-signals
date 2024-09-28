@@ -6,19 +6,28 @@ import { PokemonComponent } from './features/pokemon/pokemon.component';
 
 export const routes: Routes = [
     {
-        path: '',
+        path: '1',
         component: Pag1Component
     },
     {
-        path: 'due',
+        path: '2',
         component: Pag2Component
     },
     {
-        path: 'tre',
+        path: '3',
         component: Pag3Component
     },
     {
-        path: 'poke',
+        path: '4',
         component: PokemonComponent
+    },
+    {
+        path: '',
+        redirectTo: '/1',
+        pathMatch: 'full'
+    },
+    {
+        path: '**',
+        redirectTo: '/1'
     }
 ];

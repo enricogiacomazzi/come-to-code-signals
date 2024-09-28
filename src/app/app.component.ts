@@ -10,7 +10,6 @@ import { ThemeService } from './core/services/theme.service';
   template: `
     <div class="container" [class.dark]="ts.isDark">
       <ng-navbar />
-
       <router-outlet />
     </div>
   `,

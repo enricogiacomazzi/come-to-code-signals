@@ -6,9 +6,9 @@ import { ThemeService } from '../../core/services/theme.service';
   standalone: true,
   imports: [],
   template: `
+  <i (click)="dumb()" class="fa fa-question-circle"></i>
   <i (click)="toggle($event)" [class]="ts.iconClass"></i>
-  `,
-  styles: ``
+  `
 })
 export class ThemeSwitcherComponent {
   protected ts = inject(ThemeService);
@@ -16,5 +16,9 @@ export class ThemeSwitcherComponent {
   protected toggle(e: MouseEvent) {
     e.preventDefault();
     this.ts.toggleTheme();
+  }
+
+  protected dumb() {
+    const theAnswerToLifeTheUniverseAndEverything = 42;
   }
 }
